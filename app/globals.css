@@ -7,9 +7,15 @@
 		@apply w-full h-12 bg-neutral-200 font-medium rounded-2xl text-center hover:bg-neutral-400 active:scale-90 transition-transform;
 	}
 	.primary-div {
-		@apply flex gap-3 items-center border rounded-2xl ring-offset-2 p-1.5 relative focus-within:ring-2 focus-within:outline-none focus-within:ring-neutral-300;
+		@apply flex flex-col gap-3 relative;
 	}
-	.invalid_div {
-		@apply flex gap-3 items-center border rounded-2xl ring-offset-2 p-1.5 relative focus-within:ring-2 focus-within:outline-none focus-within:ring-orange-300 border-pink-300;
+	.primary-icon {
+		@apply h-5 w-5 absolute ml-4 mt-3.5;
+	}
+	.primary-input {
+		@apply w-full h-12 rounded-2xl bg-transparent border pl-12 ring-offset-2 focus:outline-none focus-within:ring-2 focus-within:outline-none focus-within:ring-neutral-300;
+	}
+	.invalid_input {
+		@apply w-full h-12 rounded-2xl bg-transparent border pl-12 ring-offset-2 focus:outline-none focus-within:ring-2 focus-within:outline-none focus-within:ring-amber-600 border-amber-800;
 	}
 }
