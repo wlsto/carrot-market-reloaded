@@ -10,7 +10,6 @@ export default function FormInput({
 	errors = [],
 	...rest
 }: IFormInputProps & InputHTMLAttributes<HTMLInputElement>) {
-	console.log("errors", errors);
 	return (
 		<>
 			<input
