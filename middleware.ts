@@ -22,11 +22,11 @@ export async function middleware(request: NextRequest) {
 		if (!exists) {
 			return NextResponse.redirect(new URL("/", request.url));
 		}
-	} else {
+	} /* else {
 		if (exists) {
 			return NextResponse.redirect(new URL("/profile", request.url));
 		}
-	}
+	} */
 
 	/* const pathname = request.nextUrl.pathname;
 	if (pathname === "/") {
