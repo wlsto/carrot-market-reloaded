@@ -50,7 +50,7 @@ export default async function Home() {
 					<PaginatedTweetList initialTweets={initialTweets} />
 					<form action={logOut}>
 						<div className="fixed bottom-0 w-full mx-auto">
-							<FormButton text="Log out" />
+							<FormButton text="Log out" pendingText="Logging Out" />
 						</div>
 					</form>
 				</div>

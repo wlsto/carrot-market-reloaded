@@ -37,7 +37,7 @@ export default function PaginatedTweetList({ initialTweets }: TweetListProps) {
 				"No more items"
 			) : (
 				<button onClick={onMoreTweetClick} disabled={isLoading} className="small-btn mx-28">
-					{isLoading ? "로딩 중" : "Load more"}
+					{isLoading ? "Loading..." : "Load more"}
 				</button>
 			)}
 		</div>

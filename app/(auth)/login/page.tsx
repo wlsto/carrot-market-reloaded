@@ -35,7 +35,7 @@ export default function LogIn() {
 						errors={state?.fieldErrors.password}
 					/>
 				</div>
-				<FormButton text="Log in" />
+				<FormButton text="Log in" pendingText="Logging in..." />
 			</form>
 		</div>
 	);

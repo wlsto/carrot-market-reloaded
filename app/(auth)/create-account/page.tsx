@@ -55,7 +55,7 @@ export default function CreateAccount() {
 						errors={state?.fieldErrors.pwconfirm}
 					/>
 				</div>
-				<FormButton text="Create Account" />
+				<FormButton text="Create Account" pendingText="Loading..." />
 			</form>
 		</div>
 	);
