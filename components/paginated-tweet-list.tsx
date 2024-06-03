@@ -1,7 +1,7 @@
 "use client";
 
-import { getMoreTweet } from "@/app/(auth)/actions";
-import { InitialTweets } from "@/app/(auth)/page";
+import { getMoreTweet } from "@/app/(tabs)/tweets/actions";
+import { InitialTweets } from "@/app/(tabs)/tweets/page";
 import { useState } from "react";
 import ListTweet from "./list-tweet";
 
@@ -19,8 +19,8 @@ export default function PaginatedTweetList({ initialTweets }: TweetListProps) {
 		setIsLoading(true);
 		const newTweet = await getMoreTweet(page + 1);
 		if (newTweet?.length !== 0) {
-			setPage((prev) => prev + 1);
 			setTweets((prev) => [...prev!, ...newTweet!]);
+			setPage((prev) => prev + 1);
 		} else {
 			setIsLastPage(true);
 		}
