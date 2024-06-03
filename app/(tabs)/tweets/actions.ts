@@ -2,6 +2,8 @@
 
 import getSession from "@/lib/session";
 import db from "@/lib/db";
+import { z } from "zod";
+import { redirect } from "next/navigation";
 
 export async function getMoreTweet(page: number) {
 	const session = await getSession();
@@ -25,5 +27,40 @@ export async function getMoreTweet(page: number) {
 		});
 
 		return tweet;
+	}
+}
+
+const formSchema = z.object({ tweet: z.string().trim().min(5, "This should be at least 10 characters long") });
+
+export async function addTweet(prevState: any, formData: FormData) {
+	const data = {
+		tweet: formData.get("tweet"),
+	};
+
+	const result = await formSchema.safeParseAsync(data);
+
+	if (!result.success) {
+		return result.error.flatten();
+	} else {
+		const session = await getSession();
+		if (session.id) {
+			const tweet = await db.tweet.create({
+				data: {
+					tweet: result.data.tweet,
+					user: {
+						connect: {
+							id: session.id,
+						},
+					},
+				},
+				select: {
+					id: true,
+				},
+			});
+
+			if (Boolean(tweet)) {
+				redirect(`/tweets/${tweet.id}`);
+			}
+		}
 	}
 }

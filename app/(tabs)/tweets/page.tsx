@@ -2,6 +2,7 @@ import getSession from "@/lib/session";
 import db from "@/lib/db";
 import { Prisma } from "@prisma/client";
 import PaginatedTweetList from "@/components/paginated-tweet-list";
+import AddTweet from "@/components/add-tweet";
 
 async function getInitialTweets() {
 	const session = await getSession();
@@ -34,6 +35,7 @@ export default async function Home() {
 
 	return (
 		<div>
+			<AddTweet />
 			<PaginatedTweetList initialTweets={initialTweets} />
 		</div>
 	);
