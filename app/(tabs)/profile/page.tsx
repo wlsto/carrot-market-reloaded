@@ -47,7 +47,7 @@ export default async function Profile() {
 				</div>
 				<form action={logOut}>
 					<div>
-						<FormButton text="Log out" />
+						<FormButton text="Log out" pendingText="Logging Out" />
 					</div>
 				</form>
 			</div>
