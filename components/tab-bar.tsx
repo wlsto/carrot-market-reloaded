@@ -9,8 +9,8 @@ export default function TabBar() {
 	const pathname = usePathname();
 	return (
 		<div className="fixed bottom-0 w-full mx-auto grid grid-cols-2 border-neutral-600 border-t px-5 py-3">
-			<Link href="/" className="flex flex-col items-center gap-px">
-				{pathname === "/" ? (
+			<Link href="/tweets" className="flex flex-col items-center gap-px">
+				{pathname === "/tweets" ? (
 					<SolidHomeIcon className="h-6 w-6 text-gray-500" />
 				) : (
 					<OutlineHomeIcon className="h-6 w-6 text-gray-500" />

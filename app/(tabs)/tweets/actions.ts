@@ -9,13 +9,16 @@ export async function getMoreTweet(page: number) {
 	const session = await getSession();
 	if (session.id) {
 		const tweet = await db.tweet.findMany({
-			where: {
-				userId: session.id,
-			},
 			include: {
 				user: {
 					select: {
 						username: true,
+					},
+				},
+				_count: {
+					select: {
+						responses: true,
+						likes: true,
 					},
 				},
 			},
@@ -30,14 +33,14 @@ export async function getMoreTweet(page: number) {
 	}
 }
 
-const formSchema = z.object({ tweet: z.string().trim().min(5, "This should be at least 10 characters long") });
+const tweetSchema = z.object({ tweet: z.string().trim().min(5, "This should be at least 10 characters long") });
 
 export async function addTweet(prevState: any, formData: FormData) {
 	const data = {
 		tweet: formData.get("tweet"),
 	};
 
-	const result = await formSchema.safeParseAsync(data);
+	const result = await tweetSchema.safeParseAsync(data);
 
 	if (!result.success) {
 		return result.error.flatten();

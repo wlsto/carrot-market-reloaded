@@ -5,16 +5,20 @@ import PaginatedTweetList from "@/components/paginated-tweet-list";
 import AddTweet from "@/components/add-tweet";
 
 async function getInitialTweets() {
+	//await new Promise((r) => setTimeout(r, 100000));
 	const session = await getSession();
 	if (session.id) {
 		const tweet = await db.tweet.findMany({
-			where: {
-				userId: session.id,
-			},
 			include: {
 				user: {
 					select: {
 						username: true,
+					},
+				},
+				_count: {
+					select: {
+						responses: true,
+						likes: true,
 					},
 				},
 			},
